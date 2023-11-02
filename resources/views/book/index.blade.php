@@ -15,12 +15,13 @@
         <tr>
             <th>id</th><th>Title</th><th>Author</th><th>Price</th>
         </tr>
-        @foreach ($items as $item)
+
+        @foreach ($items as $item){{-- 配列$items（booksテーブルの全項目。コントローラーに記述あり）から、1個ずつ取り出して$itemに格納する --}}
             <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->title }}</td>
-                <td>{{ $item->author }}</td>
-                <td>{{ $item->price }}</td>
+                <td>{{ $item->id }}</td>{{-- $itemから、プロパティ「id」を呼び出す(表示する) --}}
+                <td>{{ $item->title }}</td>{{-- $itemから、プロパティ「title」を呼び出す(表示する) --}}
+                <td>{{ $item->author }}</td>{{-- $itemから、プロパティ「author」を呼び出す(表示する) --}}
+                <td>{{ $item->price }}</td>{{-- $itemから、プロパティ「price」を呼び出す(表示する) --}}
             </tr>
         @endforeach
     </table>

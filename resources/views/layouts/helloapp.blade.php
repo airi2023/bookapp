@@ -114,6 +114,8 @@
             <li><a href="http://127.0.0.1:8000/bookapp">Index</a></li>
             <li><a href="http://127.0.0.1:8000/bookapp/find">Search</a></li>
             <li><a href="http://127.0.0.1:8000/bookapp/add">Add NewBook</a></li>
+            <li><a href="http://127.0.0.1:8000/bookapp/del">Delete</a></li>
+            <li><a href="http://127.0.0.1:8000/bookapp/edit">Edit</a></li>
         </ul>
     </div>
     {{-- @show --}}

@@ -14,10 +14,10 @@
     <form action="/bookapp/del" method="post">
         <table>
             @csrf
-
+            {{-- 以下の記述があるとURLに入力しないとページ開けない --}}
             <input type="hidden" name="id" value="{{$form->id}}">
 
-            <tr>
+            {{-- <tr>
                 <th>Title:</th>
                 <td>{{$form->title}}</td>
             </tr>
@@ -30,12 +30,25 @@
             <tr>
                 <th>Price:</th>
                 <td>{{$form->price}}</td>
-            </tr>
+            </tr> --}}
 
             <tr>
-                <th></th>
-                <td><input type="submit" name="send"></td>
+                <th>id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
             </tr>
+            @foreach ($items as $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->author }}</td>
+                    <td>{{ $item->price }}</td>
+                    <td><input type="submit" name="delete" value="削除"></td>
+                </tr>
+
+            @endforeach
+
         </table>
     </form>
 @endsection
