@@ -103,6 +103,36 @@
         .search table {
             margin: 50px auto;
         }
+
+        /* 更新ページ　フォーム幅調整 */
+        .edit input {
+            width: 5vw;
+        }
+
+        .edit td {
+            padding: 5px 1.5vw;
+        }
+
+        /* スマホ表示 ------------------------------------------------------- */
+        @media screen and (max-width:767px) {
+
+            /* 余白調整 */
+            body {
+                margin-top: 50px;
+                width: 70%;
+            }
+
+            /* ナビ縦並び */
+            .links ul {
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* 更新ページ　フォーム幅調整 */
+            .edit input {
+                width: 13vw;
+            }
+        }
     </style>
 </head>
 
@@ -113,7 +143,7 @@
         <ul>
             <li><a href="http://127.0.0.1:8000/bookapp">Index</a></li>
             <li><a href="http://127.0.0.1:8000/bookapp/find">Search</a></li>
-            <li><a href="http://127.0.0.1:8000/bookapp/add">Add NewBook</a></li>
+            <li><a href="http://127.0.0.1:8000/bookapp/add">Add</a></li>
             <li><a href="http://127.0.0.1:8000/bookapp/del">Delete</a></li>
             <li><a href="http://127.0.0.1:8000/bookapp/edit">Edit</a></li>
         </ul>

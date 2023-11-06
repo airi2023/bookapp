@@ -11,33 +11,37 @@
 @endsection
 
 @section('content'){{-- contentという名前のsection部分に<p>タグ部分を表示させる --}}
-    <form action="/bookapp/edit" method="post">
+    <div class="edit">
         <table>
             @csrf
-
-            <input type="hidden" name="id" value="{{$form->id}}">
-
             <tr>
-                <th>Title:</th>
-                <td><input type="text" name="title" value="{{$form->title}}"></td>
+                <th>id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
             </tr>
 
-            <tr>
-                <th>Author:</th>
-                <td><input type="text" name="author" value="{{$form->author}}"></td>
-            </tr>
+            @foreach ($items as $item)
+                <tr>
+                    <form action="/bookapp/edit" method="post">
+                        @csrf
+                        <td class="id">{{ $item->id }}</td>
+                        <td><input type="text" name="title" value="{{ $item->title }}"></td>
 
-            <tr>
-                <th>Price:</th>
-                <td><input type="number" name="price" value="{{$form->price}}"></td>
-            </tr>
+                        <td><input type="text" name="author" value="{{ $item->author }}"></td>
 
-            <tr>
-                <th></th>
-                <td><input type="submit" name="send"></td>
-            </tr>
+                        <td><input type="number" name="price" value="{{ $item->price }}"></td>
+
+                        <td>
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input type="submit" value="更新">
+                        </td>
+                    </form>
+
+                </tr>
+            @endforeach
         </table>
-    </form>
+    </div>
 @endsection
 
 @section('footer')

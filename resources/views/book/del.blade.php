@@ -14,42 +14,35 @@
     <form action="/bookapp/del" method="post">
         <table>
             @csrf
-            {{-- 以下の記述があるとURLに入力しないとページ開けない --}}
-            <input type="hidden" name="id" value="{{$form->id}}">
-
-            {{-- <tr>
-                <th>Title:</th>
-                <td>{{$form->title}}</td>
-            </tr>
-
-            <tr>
-                <th>Author:</th>
-                <td>{{$form->author}}</td>
-            </tr>
-
-            <tr>
-                <th>Price:</th>
-                <td>{{$form->price}}</td>
-            </tr> --}}
-
             <tr>
                 <th>id</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Price</th>
             </tr>
+
             @foreach ($items as $item)
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->author }}</td>
-                    <td>{{ $item->price }}</td>
-                    <td><input type="submit" name="delete" value="削除"></td>
+                    <form action="/bookapp/del" method="post">
+
+                        @csrf
+                        <td>{{ $item->id }}</td>{{-- $itemから、プロパティ「id」を呼び出す(表示する) --}}
+                        <td>{{ $item->title }}</td>{{-- $itemから、プロパティ「title」を呼び出す(表示する) --}}
+                        <td>{{ $item->author }}</td>{{-- $itemから、プロパティ「author」を呼び出す(表示する) --}}
+                        <td>{{ $item->price }}</td>{{-- $itemから、プロパティ「price」を呼び出す(表示する) --}}
+
+                        <td>
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input class="del" type="submit" value="削除する">
+                        </td>
                 </tr>
+    </form>
+    </td>
 
-            @endforeach
+    </tr>
+    @endforeach
 
-        </table>
+    </table>
     </form>
 @endsection
 
