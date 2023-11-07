@@ -78,19 +78,18 @@ class BookController extends Controller
 
     public function search(Request $request)
     {
-        $item = Book::find($request->input); //送信されたフォームの値(id)を、変数$itemに代入
-        $item = Book::where('title', $request->input)->first(); //DBに登録されているtitleと、送信されたフォームの値が同じ条件(一致)なら、最初のデータだけ取得して、変数$itemに代入
-        $param = ['input' => $request->input, 'item' => $item]; //変数inputに$request->input（送信されたフォームの値）、変数itemに$itemを入れて、$paramに代入
-        return view('book.find', $param); //①find.blade.php呼び出し、⓶変数$param（送信されたフォームの値）を渡す
+        // $item = Book::find($request->input); //送信されたフォームの値(変数input)を、変数$itemに代入
+        // $item = Book::where('title', $request->input)->first(); //DBに登録されているtitleと、送信されたフォームの値が同じ条件(一致)なら、最初のデータだけ取得して、変数$itemに代入
+        // $param = ['input' => $request->input, 'item' => $item]; //変数inputに$request->input（送信されたフォームの値）、変数itemに$itemを入れて、$paramに代入
+        // return view('book.find', $param); //①find.blade.php呼び出し、⓶変数$param（送信されたフォームの値）を渡す
 
-        // // 一覧表示
-        // $items = Book::all();
 
-        // // $item = Book::find($request->input);
-        // $item = Book::find($request->input('search')); //search フィールドの値が書籍の ID として使用される
-        // $items = Book::where('title', 'like', '%' . $request->input('search') . '%')->get(); //モデルBook（テーブルbooks）のカラムtitleに対して、部分一致検索
-        // $item = Book::nameLike($request->input)->get(); //モデルの部分一致検索メソッドを起動
-        // $param = ['input' => $request->input, 'item' => $item,'items' => $items]; //viewに渡す情報を格納
-        // return view('book.find', $param); //paramの変数をfindへ送っている
+
+        // $request->input('search');  //使用されていない？
+        $item = Book::find($request->input('search'));//search フィールドの値が書籍の ID として使用される
+        $item = Book::where('title', 'like', '%' . $request->input('search') . '%')->get();//カラムnameに対して、部分一致検索
+        $item = Book::nameLike($request->input)->get();//モデルの部分一致検索メソッドを起動
+        $param = ['input'=>$request->input, 'item'=>$item];//viewに渡す情報を格納
+        return view('book.find', $param);//paramの変数をfindへ送っている
     }
 }

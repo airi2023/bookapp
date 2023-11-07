@@ -16,17 +16,17 @@
             @csrf
             <tr>
                 <th>Title:</th>
-                <td><input type="text" name="title" value="{{old('title')}}"></td>
+                <td><input type="text" name="title" value="{{ old('title') }}"></td>
             </tr>
 
             <tr>
                 <th>Author:</th>
-                <td><input type="text" name="author" value="{{old('author')}}"></td>
+                <td><input type="text" name="author" value="{{ old('author') }}"></td>
             </tr>
 
             <tr>
                 <th>Price:</th>
-                <td><input type="number" name="price" value="{{old('price')}}"></td>
+                <td><input type="number" name="price" value="{{ old('price') }}"></td>
             </tr>
 
             <tr>
@@ -35,6 +35,18 @@
             </tr>
         </table>
     </form>
+
+    {{-- バリデーション（エラー時に表示するメッセージ） --}}
+    @if (count($errors) > 0)
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 @endsection
 
 @section('footer')

@@ -24,14 +24,14 @@ class Book extends Model
 
 
     //nameequalを使えるようにしている
-    // public function scopeNameEqual($query, $str)
-    // {
-    //     return $query->where('title', $str);
-    // }
+    public function scopeNameEqual($query, $str)
+    {
+        return $query->where('title', $str);
+    }
 
-    // //部分一致検索を有効化
-    // public function scopeNameLike($query, $search)
-    // {
-    //     return $query->where('title', 'like', '%' . $search . '%');
-    // }
+    //部分一致検索を有効化
+    public function scopeNameLike($query, $search)
+    {
+        return $query->where('title', 'like', '%' . $search . '%');
+    }
 }

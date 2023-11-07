@@ -77,7 +77,9 @@
         .content {
             display: flex;
             justify-content: center;
+            align-items: center;
             margin: 50px 0;
+            flex-direction: column;
         }
 
         th {
@@ -91,6 +93,7 @@
             border: solid 1px #aaa;
             color: #888;
             padding: 5px 2.5vw;
+            word-wrap: break-word;/*長文の場合、改行*/
         }
 
         .footer {

@@ -33,7 +33,7 @@
 
                         <td>
                             <input type="hidden" name="id" value="{{ $item->id }}">
-                            <input class="del" type="submit" value="削除する">
+                            <input class="del" type="submit" value="削除">
                         </td>
                 </tr>
     </form>
